@@ -5,6 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kafe Menüsü</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .menu-buttons {
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; /* Butonların altındaki boşluğu ayarlamak için */
+            padding-bottom: 10px; /* Kaydırma çubuğu için alt boşluk ekleyin */
+        }
+
+        .filter-btn {
+            margin-right: 10px;
+            flex-shrink: 0; /* Butonların boyutlarının küçülmemesini sağlayın */
+        }
+
+        /* Kaydırma çubuğunun boyutunu ve görünümünü özelleştirin */
+        .menu-buttons::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .menu-buttons::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Küçük ekranlarda butonların daha iyi görünmesi için düzenleme yapın */
+        @media screen and (max-width: 768px) {
+            .menu-buttons {
+                justify-content: flex-start;
+                padding-left: 10px; /* Butonların soldan boşluk almasını sağlayın */
+            }
+        }
+
+        /* Slider'ı responsive hale getirin */
+        .menu-slider {
+            overflow-x: auto;
+        }
+
+        /* Menü öğelerini küçültün */
+        .menu-item {
+            max-width: 150px; /* Menü öğelerinin maksimum genişliğini ayarlayın */
+            margin-bottom: 20px; /* Menü öğeleri arasındaki boşluğu ayarlayın */
+        }
+
+        .menu-item img {
+            max-width: 100%; /* Resimlerin maksimum genişliğini ayarlayın */
+            height: auto;
+        }
+
+        .menu-item h2,
+        .menu-item p {
+            margin: 5px 0; /* Başlık ve fiyat arasındaki boşluğu ayarlayın */
+        }
+
+        /* Küçük ekranlarda menü öğelerini daha küçük hale getirin */
+        @media screen and (max-width: 768px) {
+            .menu-item {
+                max-width: 120px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="menu-container">
@@ -84,7 +145,7 @@
                 <div class="menu-item icecekler">
                     <img src="images/pepsi33cl.jpg" height="20" alt="İçecek">
                     <h2>Pepsi 33 cl.</h2>
-                    <p>₺30</p>
+                    <p>₺35</p>
                 </div>
                 <div class="menu-item icecekler">
                     <img src="images/soda.jpg" height="20" alt="İçecek">
@@ -94,12 +155,6 @@
                 <div class="menu-item icecekler">
                     <img src="images/salgam.jpg" height="20" alt="İçecek">
                     <h2>Şalgam</h2>
-                    <p>₺20</p>
-                </div>
-                
-                <div class="menu-item icecekler">
-                    <img src="images/fruko.jpg" height="20" alt="İçecek">
-                    <h2>Fruko</h2>
                     <p>₺25</p>
                 </div>
 
@@ -107,5 +162,14 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuButtons = document.querySelector(".menu-buttons");
+            const slider = document.createElement("div");
+            slider.className = "menu-slider";
+            menuButtons.parentNode.insertBefore(slider, menuButtons);
+            slider.appendChild(menuButtons);
+        });
+    </script>
 </body>
 </html>
