@@ -6,6 +6,35 @@
     <title>Kafe Menüsü</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        
+        @keyframes fadeInBackground {
+    from {
+        background-color: #111; /* Animasyon başlangıcında arka plan rengi */
+    }
+    to {
+        background-color: #000; /* Animasyon sonunda arka plan rengi */
+    }
+}
+
+body {
+    animation: fadeInBackground 1s ease;
+    background-color: #111; /* Başlangıç arka plan rengi */
+}
+        @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0; /* Animasyon başlangıcında öğeleri gizleyin */
+}
         .menu-buttons {
             overflow-x: auto;
             white-space: nowrap;
@@ -65,13 +94,25 @@
                 max-width: 120px;
             }
         }
+
+        .menu-item:hover {
+            transform: scale(1.05); /* Büyütme efekti */
+            transition: transform 0.3s ease; /* Yumuşak geçiş */
+        }
+
+        /* Butonların hover efekti */
+        .filter-btn:hover {
+            background-color: #ddd; /* Arka plan rengini değiştirin */
+            transition: background-color 0.3s ease; /* Yumuşak geçiş */
+        }
     </style>
 </head>
 <body>
+    
     <div class="menu-container">
         <div class="logo-container">
             <img src="images/logo.jpg" alt="Kafe Logosu">
-            <h1>Tostçu İsmell</h1>
+            <h1 style="color: white;">Tostçu İsmell</h1>
         </div>
         <div class="menu">
             <div class="menu-buttons">
